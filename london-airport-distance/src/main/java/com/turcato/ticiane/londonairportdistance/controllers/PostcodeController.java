@@ -38,6 +38,8 @@ public class PostcodeController {
 
         if(proxyService.validatePostcode(postcode)){
             Postcode clientPostcode = proxyService.findPostcode(postcode);
+            clientPostcode.setDistanceInKm(postcodeService.distance(clientPostcode.getLatitude(), clientPostcode.getLongitude()));
+            clientPostcode.setDistanceInMiles(postcodeService.kilometersToMiles(clientPostcode.getDistanceInKm()));
             postcodeService.addToSearchesHistory(clientPostcode);
             return ResponseEntity.ok(clientPostcode);
         }

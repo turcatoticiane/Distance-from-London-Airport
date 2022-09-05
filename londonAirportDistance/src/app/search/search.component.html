@@ -1,8 +1,22 @@
-<section>
-  <form (ngSubmit)="search()">
-    <label for="postcode"><h4>Your postcode here:</h4></label>
-    <input id="clientpostcode" type="text" name="postcode" [(ngModel)]="onSearch" />
+<section class="container">
 
-    <button type="submit">Search</button>
-  </form>
+  <img class="airplane" src="assets/img/airplane_purple.png" alt="Airplane image">
+
+  <h3>Your postcode here:</h3>
+
+  <div class="field">
+    <input
+      id="clientpostcode"
+      type="text"
+      name="postcode"
+      placeholder="postcode"
+      #postcode
+    />
+  </div>
+
+  <div class="button-wrapper">
+    <button type="submit" (click)="search(postcode.value); postcode.value = ''">
+      Search
+    </button>
+  </div>
 </section>

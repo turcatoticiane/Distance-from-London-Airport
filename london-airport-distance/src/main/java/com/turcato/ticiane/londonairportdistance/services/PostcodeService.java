@@ -18,11 +18,17 @@ public class PostcodeService {
     private List<Postcode> searchHistory = new ArrayList<>();
 
     public PostcodeService() {
-        searchHistory.add(new Postcode("N7 6RS", "London", -0.116805, 51.560414, distance(-0.116805, 51.560414), kilometersToMiles(distance(-0.116805, 51.560414))));
-        searchHistory.add(new Postcode("SW4 6TA", "London", -0.12278, 51.472716, distance(-0.12278, 51.472716), kilometersToMiles(distance(-0.12278, 51.472716))));
+        searchHistory.add(new Postcode("N7 6RS", "London", -0.116805, 51.560414, distance(51.560414, -0.116805), kilometersToMiles(distance(51.560414, -0.116805))));
+        searchHistory.add(new Postcode("SW4 6TA", "London", -0.12278, 51.472716, distance(51.472716, -0.12278), kilometersToMiles(distance(51.472716, -0.12278))));
     }
 
     public void addToSearchesHistory(Postcode postcode){
+
+        if(searchHistory.size() == 3){
+            searchHistory.remove(0);
+            searchHistory.add(postcode);
+            return;
+        }
         searchHistory.add(postcode);
     }
 

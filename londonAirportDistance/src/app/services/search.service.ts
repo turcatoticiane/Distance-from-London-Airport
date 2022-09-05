@@ -20,12 +20,12 @@ export class SearchService {
   }
 
   all(): Observable<Postcode[]> {
-    return this.http.get<Postcode[]>(`${this.API}search-history`);
+    return this.http.get<Postcode[]>(this.API + 'search-history');
   }
 
   findPostcode(clientPostcode: string): Observable<Postcode>{
-    return this.http.get<Postcode>(`${this.API} + ${clientPostcode}`);
+    console.log(this.API + clientPostcode);
+    return this.http.get<Postcode>(this.API + clientPostcode);
   }
-
 
 }
