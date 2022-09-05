@@ -1,6 +1,10 @@
 package com.turcato.ticiane.londonairportdistance.services;
 
+import com.turcato.ticiane.londonairportdistance.models.Postcode;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Provides methods to calculate distances between client postcode and London Heathrow airport
@@ -10,6 +14,21 @@ public class PostcodeService {
 
     private final double AIRPORT_LONG = -0.4542955;
     private final double AIRPORT_LAT = 51.4700223;
+
+    private List<Postcode> searchHistory = new ArrayList<>();
+
+    public PostcodeService() {
+        searchHistory.add(new Postcode("N7 6RS", "London", -0.116805, 51.560414, distance(-0.116805, 51.560414), kilometersToMiles(distance(-0.116805, 51.560414))));
+        searchHistory.add(new Postcode("SW4 6TA", "London", -0.12278, 51.472716, distance(-0.12278, 51.472716), kilometersToMiles(distance(-0.12278, 51.472716))));
+    }
+
+    public void addToSearchesHistory(Postcode postcode){
+        searchHistory.add(postcode);
+    }
+
+    public List<Postcode> getSearchHistory() {
+        return this.searchHistory;
+    }
 
     /**
      * Calculates the distance between client and London Heathrow airport, using the Haversine Formula

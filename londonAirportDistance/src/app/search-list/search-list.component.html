@@ -1,0 +1,27 @@
+<h3>Last postcodes searched:</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Postcode</th>
+      <th>Area</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Distance in KM</th>
+      <th>Distance in Miles</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="!!postcodes; else emptyList">
+    <tr *ngFor="let postcode of postcodes">
+      <td>{{ postcode.postcode }}</td>
+      <td>{{ postcode.region }}</td>
+      <td>{{ postcode.longitude }}</td>
+      <td>{{ postcode.latitude }}</td>
+      <td>{{ postcode.distanceInKm }}</td>
+      <td>{{ postcode.distanceInMiles }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #emptyList>
+  <p>No postcode searched yet.</p>
+</ng-template>

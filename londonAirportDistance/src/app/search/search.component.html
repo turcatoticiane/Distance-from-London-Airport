@@ -1,0 +1,8 @@
+<section>
+  <form (ngSubmit)="search()">
+    <label for="postcode"><h4>Your postcode here:</h4></label>
+    <input id="clientpostcode" type="text" name="postcode" [(ngModel)]="onSearch" />
+
+    <button type="submit">Search</button>
+  </form>
+</section>

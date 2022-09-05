@@ -2,10 +2,14 @@ package com.turcato.ticiane.londonairportdistance.models;
 
 
 import com.turcato.ticiane.londonairportdistance.proxy.Result;
+import com.turcato.ticiane.londonairportdistance.services.PostcodeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  */
+@Component
 public class Postcode {
 
 
@@ -13,11 +17,25 @@ public class Postcode {
     private String region;
     private double longitude;
     private double latitude;
+    private double distanceInKm;
+    private double distanceInMiles;
 
+
+    //@Autowired
+    //private PostcodeService service;
     /**
      * The default constructor
      */
     public Postcode() {
+    }
+
+    public Postcode(String postcode, String region, double longitude, double latitude, double kmDistance, double milesDistance) {
+        this.postcode = postcode;
+        this.region = region;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.distanceInKm = kmDistance;
+        this.distanceInMiles = milesDistance;
     }
 
     /**
@@ -30,6 +48,10 @@ public class Postcode {
         this.longitude = result.getLongitude();
         this.latitude = result.getLatitude();
     }
+
+    /*private double airportDistance(){
+        return service.distance(this.latitude, this.longitude);
+    }*/
 
     public String getPostcode() {
         return postcode;
@@ -61,5 +83,21 @@ public class Postcode {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    public double getDistanceInMiles() {
+        return distanceInMiles;
+    }
+
+    public void setDistanceInMiles(double milesDistance) {
+        this.distanceInMiles = milesDistance;
+    }
+
+    public double getDistanceInKm() {
+        return distanceInKm;
+    }
+
+    public void setDistanceInKm(double kmDistance) {
+        this.distanceInKm = kmDistance;
     }
 }
