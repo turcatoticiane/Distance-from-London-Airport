@@ -1,22 +1,48 @@
 <section class="container">
 
-  <img class="airplane" src="assets/img/airplane_purple.png" alt="Airplane image">
-
   <h3>Your postcode here:</h3>
 
-  <div class="field">
+  <div>
     <input
       id="clientpostcode"
       type="text"
       name="postcode"
-      placeholder="postcode"
+      placeholder="Insert your postcode"
       #postcode
     />
   </div>
 
-  <div class="button-wrapper">
+  <div>
     <button type="submit" (click)="search(postcode.value); postcode.value = ''">
       Search
     </button>
   </div>
+
+  <section class="postcode-info" *ngIf="postcodeInfo.postcode != null; else emptyList">
+    <div class="table-row">
+      <p class="title">Postcode</p>
+      <p>{{ postcodeInfo.postcode }}</p>
+    </div>
+    <div class="table-row">
+      <p class="title">Postcode Area</p>
+      <p>{{ postcodeInfo.region }}</p>
+    </div>
+    <div class="table-row">
+      <p class="title">Longitude</p>
+      <p>{{ postcodeInfo.longitude }}</p>
+      <p class="title">Latitude</p>
+      <p>{{ postcodeInfo.latitude }}</p>
+    </div>
+    <div class="table-row">
+      <p class="title">Distance in Km</p>
+      <p>{{ postcodeInfo.distanceInKm }}</p>
+      <p class="title">Distance in Miles</p>
+      <p>{{ postcodeInfo.distanceInMiles }}</p>
+    </div>
+  </section>
+
+  <ng-template #emptyList>
+    <p>No postcode searched yet.</p>
+  </ng-template>
+
 </section>

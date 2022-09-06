@@ -1,11 +1,37 @@
-.airplane {
-  align-content: center;
-  size-adjust: 50%;
-}
-
 h3 {
-  text-align: center;
+  font-size: 1.5em;
+  font-variant: small-caps;
 }
 
+input {
+  border-radius: 05px;
+  margin: 10px;
+  width: 40%;
+}
 
+button {
+  background: purple;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  transition-duration: 0.2s;
+  width: 25%;
+  color: antiquewhite;
+  font-variant: small-caps;
+}
 
+button:hover {
+  background: gainsboro;
+  color: purple;
+}
+
+.postcode-info {
+  font-size: 1em;
+  font-variant: small-caps;
+}
+
+.title {
+  color: purple;
+  text-decoration: underline;
+  font-weight: bold;
+}

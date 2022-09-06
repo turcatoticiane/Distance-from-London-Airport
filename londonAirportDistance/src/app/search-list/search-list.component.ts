@@ -8,7 +8,6 @@ import { SearchService } from '../services/search.service';
   styleUrls: ['./search-list.component.scss'],
 })
 export class SearchListComponent implements OnInit {
-  //@Input() postcodes: any[] = [];
 
   postcodes: Postcode[] = [];
 

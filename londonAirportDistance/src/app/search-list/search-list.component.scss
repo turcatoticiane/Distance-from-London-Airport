@@ -1,35 +1,22 @@
-
 h3 {
-  text-align: center;
+  font-size: 1.5em;
+  font-variant: small-caps;
 }
 
-.table {
-  text-align: center;
-  margin: 0 auto;
+table, th, td {
+  border-collapse: collapse;
+  border: 1px solid purple;
+  width: 100%;
+  padding: 10px;
+  font-variant: small-caps;
+}
 
-  &__head {
-    color: purple;
+thead {
+  background-color: purple;
+  color: aliceblue;
+}
 
-    &__content {
-      padding: 10px;
-      border: 2px solid purple;
-    }
-  }
-
-  &__line{
-    margin-bottom: 10px;
-    border-radius: 4px;
-
-    &:last-child {
-      .table__content{
-        border-bottom: none;
-      }
-    }
-  }
-
-  &__content {
-    padding: 10px;
-    border-bottom: 1px solid rgb(201, 198, 198);
-  }
-
+tr:hover{
+  background: lightgray;
+  color: purple;
 }

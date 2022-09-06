@@ -1,3 +1,4 @@
+import { Postcode } from './../models/postcode.model';
 import { SearchService } from './../services/search.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
@@ -8,6 +9,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+  postcodeInfo: Partial<Postcode> = {};
+
   constructor(private service: SearchService) {}
 
   ngOnInit(): void {}
@@ -16,7 +19,7 @@ export class SearchComponent implements OnInit {
     console.log('Searching for the postcode.');
 
     this.service.findPostcode(postcode).subscribe((data) => {
-      console.log(data);
+      this.postcodeInfo = data;
     });
   }
 

@@ -7,25 +7,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SearchService {
-
-  private searchList: any[];
   private readonly API = 'http://localhost:8080/api/';
 
-  constructor(private http: HttpClient) {
-    this.searchList = [];
-  }
-
-  get searchHistory() {
-    return this.searchList;
-  }
+  constructor(private http: HttpClient) {}
 
   all(): Observable<Postcode[]> {
     return this.http.get<Postcode[]>(this.API + 'search-history');
   }
 
-  findPostcode(clientPostcode: string): Observable<Postcode>{
+  findPostcode(clientPostcode: string): Observable<Postcode> {
     console.log(this.API + clientPostcode);
     return this.http.get<Postcode>(this.API + clientPostcode);
   }
-
 }

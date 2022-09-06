@@ -3,6 +3,7 @@ package com.turcato.ticiane.londonairportdistance.services;
 import com.turcato.ticiane.londonairportdistance.models.Postcode;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +18,19 @@ public class PostcodeService {
 
     private List<Postcode> searchHistory = new ArrayList<>();
 
+    /**
+     * Constructor initializang the postcode list for tests and search history
+     */
     public PostcodeService() {
+        //postcodes just to test the history
         searchHistory.add(new Postcode("N7 6RS", "London", -0.116805, 51.560414, distance(51.560414, -0.116805), kilometersToMiles(distance(51.560414, -0.116805))));
         searchHistory.add(new Postcode("SW4 6TA", "London", -0.12278, 51.472716, distance(51.472716, -0.12278), kilometersToMiles(distance(51.472716, -0.12278))));
     }
 
+    /**
+     * Adds the postcode searched to the search history
+     * @param postcode searched
+     */
     public void addToSearchesHistory(Postcode postcode){
 
         if(searchHistory.size() == 3){
@@ -32,6 +41,10 @@ public class PostcodeService {
         searchHistory.add(postcode);
     }
 
+    /**
+     * Gets the search history of the postcodes
+     * @return the search history
+     */
     public List<Postcode> getSearchHistory() {
         return this.searchHistory;
     }
@@ -59,7 +72,7 @@ public class PostcodeService {
 
         Double distance = R * c;
 
-        return distance;
+        return (Math.round(distance*100.0)/100.0);
     }
 
     /**
@@ -78,7 +91,7 @@ public class PostcodeService {
      */
     public double kilometersToMiles(double km){
 
-        return km/1.609344;
+        return (Math.round(((km/1.609344)*100.0)/100.0));
     }
 
     /**
@@ -87,7 +100,8 @@ public class PostcodeService {
      * @return the kilometers distance
      */
     public double milesToKilometers(double miles){
-        return miles/0.6213712;
+
+        return (Math.round(((miles/0.6213712)*100.0)/100.0));
     }
 
 }

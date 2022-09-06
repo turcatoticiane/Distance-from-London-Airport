@@ -23,6 +23,10 @@ public class PostcodeController {
     @Autowired
     private PostcodeService postcodeService;
 
+    /**
+     * Gets the 3 last postcodes searched
+     * @return the 3 last postcodes searched
+     */
     @GetMapping("/search-history")
     private ResponseEntity<List<Postcode>> getSearchHistory(){
         return ResponseEntity.ok(postcodeService.getSearchHistory());
